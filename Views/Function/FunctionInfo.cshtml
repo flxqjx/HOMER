@@ -1,0 +1,27 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div ng-controller="DemoCtrl">
+    <uib-tabset active="active">
+        <uib-tab index="0">
+            <uib-tab-heading>
+                This is tab1
+            </uib-tab-heading>
+
+            <div class="gridStyle" ui-grid="gridOptions" ui-grid-edit ui-grid-pagination
+                 ui-grid-selection ui-grid-exporter ui-grid-resize-columns ui-grid-auto-resize ui-grid-move-columns></div>
+
+
+        </uib-tab>
+        <uib-tab index="1">
+            <uib-tab-heading>
+                This is tab2
+            </uib-tab-heading>
+
+            <div class="gridStyle" ui-grid="gridOptionsTwo" ui-grid-selection ui-grid-exporter></div>
+
+        </uib-tab>
+    </uib-tabset>
+</div>

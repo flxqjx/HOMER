@@ -1,0 +1,296 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div class="row" ng-controller="profileCtrl">
+    <div class="col-lg-4">
+        <div class="hpanel hgreen">
+            <div class="panel-body">
+                <div class="pull-right text-right">
+                    <div class="btn-group">
+                        <i class="fa fa-cog btn btn-default btn-xs " tooltip-placement="bottom" uib-tooltip="设置" ng-click="eidtProfile('lg')"></i>
+                        <!--<i class="fa fa-twitter btn btn-default btn-xs"></i>
+                        <i class="fa fa-linkedin btn btn-default btn-xs"></i>-->
+                    </div>
+                </div>
+                <img alt="logo" class="img-circle m-b m-t-md" src="images/profile.jpg">
+                <h3><a href="">钱多多</a></h3>
+                <div class="text-muted font-bold m-b-xs">信息化中心</div>
+                <!--<p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est vitae ultrices accumsan.
+                </p>-->
+                <uib-progressbar value="65" type="success" class="progress-small full progress-striped active"></uib-progressbar>
+            </div>
+            <!--<div class="border-right border-left">
+                <section id="map" ng-controller="googleMapCtrl">
+                    <div ui-map="myMap" ui-options="mapOptions" style="height: 200px"></div>
+                </section>
+            </div>-->
+            <div class="panel-body">
+                <dl>
+                    <dt>Description lists</dt>
+                    <dd>A description list is perfect for defining terms.</dd>
+                    <dt>Euismod</dt>
+                    <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+                    <dd>Donec id elit non mi porta gravida at eget metus.</dd>
+                    <dt>Malesuada porta</dt>
+                    <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+                </dl>
+            </div>
+            <div class="panel-footer contact-footer">
+                <div class="row">
+                    <div class="col-md-4 border-right">
+                        <div class="contact-stat"><span>Projects: </span> <strong>200</strong></div>
+                    </div>
+                    <div class="col-md-4 border-right">
+                        <div class="contact-stat"><span>Messages: </span> <strong>300</strong></div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="contact-stat"><span>Views: </span> <strong>400</strong></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-lg-8">
+        <div class="hpanel">
+            <uib-tabset>
+                <uib-tab>
+                    <uib-tab-heading>
+                        员工
+                    </uib-tab-heading>
+                    <div class="panel-body" ng-controller="userCtrl">
+                        <div class="row">
+                            <div class="form-group col-sm-6 col-md-4  col-lg-3 ">
+                                <label class="control-label  col-lg-4 text-right p-t">部门:</label>
+                                <div class="col-lg-8">
+                                    <select class="form-control m-b" name="selDept">
+                                        <option selected>信息化中心</option>
+                                        <option>互联网中心</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6 col-md-4 col-lg-3">
+                                <label class="control-label  col-lg-6 text-right p-t">人员状态:</label>
+                                <div class="col-lg-6">
+                                    <select class="form-control m-b" name="selRole">
+                                        <option selected>在职</option>
+                                        <option>离职</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group  col-sm-12 col-md-4 col-lg-3">
+                                <label class="control-label col-lg-6 text-right p-t">账户状态:</label>
+                                <div class="col-lg-6">
+                                    <select class="form-control m-b" name="selUsersStatus">
+                                        <option selected>正常</option>
+                                        <option>异常</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6 col-md-6 col-lg-2">
+                                <div class="col-lg-12">
+                                    <input class="form-control" type="text" placeholder="登录名、姓名、编码搜索">
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6 col-md-6 col-lg-1">
+                                <div class="col-lg-12 ">
+                                    <button class="btn btn-default btn-sm"><i class="fa fa-search"></i>搜索</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gridStyle" ng-grid="gridOptions"></div>
+                    </div>
+                </uib-tab>
+                <uib-tab>
+                    <uib-tab-heading>
+                        配置
+                    </uib-tab-heading>
+                    <div>
+                        <div class="panel-heading ">
+                            消息接收方式配置
+                        </div>
+                        <div class="panel-body" style="border-top:1px solid #e4e5e7;" ng-controller="rptMesConfigCtrl">
+                            <form method="post" class="form-horizontal" novalidate role="form" name="rptMesConfig">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">接收方式:</label>
+                                    <div class="col-sm-10">
+                                        <label class="checkbox-inline"> <input icheck type="checkbox" ng-model="site" checked disabled>站内</label>
+                                        <label class="checkbox-inline"> <input icheck type="checkbox" ng-model="dingding">钉钉 </label>
+                                        <label class="checkbox-inline"> <input icheck type="checkbox" ng-model="phone">手机</label>
+                                        <label class="checkbox-inline"> <input icheck type="checkbox" ng-model="email">邮箱</label>
+                                    </div>
+                                </div>
+                                <div class="form-group" ng-if="phone||dingding">
+                                    <label class="col-sm-2 control-label">手机:</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" placeholder="手机" class="form-control" name="phoneConfig" ng-model="phoneConfig" ng-maxlength="11" ng-minlength="11" required>
+                                    </div>
+                                    <div class="m-t-xs col-sm-6" ng-show="rptMesConfig.phoneConfig.$invalid && rptMesConfig.submitted">
+                                        <span class="text-danger" ng-show="rptMesConfig.phoneConfig.$error"><i class="fa fa-exclamation-triangle"></i> 请输入11位电话号码！</span>
+                                    </div>
+                                </div>
+                                <div class="form-group" ng-if="email">
+                                    <label class="col-sm-2 control-label">邮箱:</label>
+                                    <div class="col-sm-4">
+                                        <div class="input-group m-b"><input type="text" placeholder="邮箱" class="form-control" required name="emailConfig" ng-model="emailConfig"><span class="input-group-addon">@iprun.com</span></div>
+                                    </div>
+                                    <div class="m-t-xs col-sm-6" ng-show="rptMesConfig.emailConfig.$invalid && rptMesConfig.submitted">
+                                        <span class="text-danger" ng-show="rptMesConfig.emailConfig.$error"><i class="fa fa-exclamation-triangle"></i> 请输入有效的邮寄地址！</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-8 col-sm-offset-2">
+                                        <button class="btn btn-primary" type="submit" ng-click="saveRptMesConfig()">保存</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="panel-heading ">
+                            呼叫中心坐席配置
+                        </div>
+                        <div class="panel-body" style="border-top:1px solid #e4e5e7;" ng-controller="callCentSeatConfigCtrl">
+                            <form method="post" class="form-horizontal" novalidate role="form" name="callCentSeatConfig">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">坐席账户:</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" placeholder="坐席账户" class="form-control" name="accountConfig" ng-model="accountConfig" required>
+                                    </div>
+                                    <div class="m-t-xs col-sm-6" ng-show="callCentSeatConfig.accountConfig.$invalid && callCentSeatConfig.submitted">
+                                        <span class="text-danger" ng-show="callCentSeatConfig.accountConfig.$error"><i class="fa fa-exclamation-triangle"></i> 请输入坐席账户！</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">分机号码:</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" placeholder="分机号码" class="form-control" required name="extNumConfig" ng-model="extNumConfig">
+                                    </div>
+                                    <div class="m-t-xs col-sm-6" ng-show="callCentSeatConfig.extNumConfig.$invalid && callCentSeatConfig.submitted">
+                                        <span class="text-danger" ng-show="callCentSeatConfig.extNumConfig.$error"><i class="fa fa-exclamation-triangle"></i> 请输入分机号码！</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-8 col-sm-offset-2">
+                                        <button class="btn btn-primary" type="submit" ng-click="saveCentSeatConfig()">保存</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </uib-tab>
+                <uib-tab>
+                    <uib-tab-heading>
+                        销售额配置
+                    </uib-tab-heading>
+                    <div class="panel-body" ng-controller="salesConfigCtrl">
+                        <form method="get" class="form-horizontal" novalidate role="form" name="salesConfig">
+                            <div class="row">
+                                <div class="form-group  col-md-5">
+                                    <label class="control-label  col-md-3 text-right p-t">月度:</label>
+                                    <div class="col-md-4">
+                                        <p class="input-group">
+                                            <input type="text" class="form-control" uib-datepicker-popup="yyyy-MM"
+                                                   show-button-bar="true" ng-model="startDateTime" is-open="openedStart"
+                                                   datepicker-options="dateOptions"
+                                                   ng-required="true" />
+                                            <span class="input-group-btn">
+                                                <button type="button" class="btn btn-default" ng-click="openStart($event)">
+                                                    <i class="glyphicon glyphicon-calendar"></i>
+                                                </button>
+                                            </span>
+                                        </p>
+                                    </div>
+                                    <label class="control-label  col-md-1 text-right p-t">-</label>
+                                    <div class="col-md-4">
+                                        <p class="input-group">
+                                            <input type="text" class="form-control" uib-datepicker-popup="yyyy-MM"
+                                                   show-button-bar="true" ng-model="endDateTime" is-open="openedEnd"
+                                                   datepicker-options="dateOptions"
+                                                   ng-required="true" />
+                                            <span class="input-group-btn">
+                                                <button type="button" class="btn btn-default" ng-click="openEnd($event)">
+                                                    <i class="glyphicon glyphicon-calendar"></i>
+                                                </button>
+                                            </span>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="form-group  col-md-3">
+                                    <label class="control-label  col-md-6 text-right p-t">产品线:</label>
+                                    <div class="col-md-6">
+                                        <select class="form-control m-b" name="selRole">
+                                            <option selected>商标</option>
+                                            <option>专利</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-md-2">
+                                    <div class="col-md-12">
+                                        <input class="form-control" type="text" placeholder="任务额">
+                                    </div>
+                                </div>
+                                <div class="form-group  col-md-2">
+                                    <div class="col-md-12 btn-group">
+                                        <button class="btn btn-default btn-sm"><i class="fa fa-search"></i>搜索</button>
+                                        <button class="btn btn-default btn-sm">添加</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <!--<div class="gridStyle" ng-grid="gridOptions"></div>-->
+                        <form method="post" class="form-horizontal p-t" novalidate role="form" name="salesConfig">
+                            <div class="row">
+                                <div class="form-group  col-md-5">
+                                    <label class="control-label  col-md-3 text-right p-t">月度:</label>
+                                    <div class="col-md-8">
+                                        <p class="input-group">
+                                            <input type="text" class="form-control" uib-datepicker-popup="yyyy-MM"
+                                                   show-button-bar="true" ng-model="month" is-open="openMonth"
+                                                   datepicker-options="dateOptions"
+                                                   ng-required="true" required />
+                                            <span class="input-group-btn">
+                                                <button type="button" class="btn btn-default" ng-click="openedMonth($event)">
+                                                    <i class="glyphicon glyphicon-calendar"></i>
+                                                </button>
+                                            </span>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="form-group  col-md-3">
+                                    <label class="control-label  col-md-6 text-right p-t">产品线:</label>
+                                    <div class="col-md-6">
+                                        <select class="form-control m-b" name="selRole">
+                                            <option selected>商标</option>
+                                            <option>专利</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-md-2">
+                                    <div class="col-md-12">
+                                        <input class="form-control" type="text" placeholder="任务额" required>
+                                    </div>
+                                </div>
+                                <div class="form-group  col-md-2">
+                                    <div class="col-md-12 btn-group">
+                                        <button class="btn btn-primary" type="submit" ng-click="saveSalesConfig()">保存</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+
+
+                    </div>
+                </uib-tab>
+            </uib-tabset>
+        </div>
+
+    </div>
+</div>
